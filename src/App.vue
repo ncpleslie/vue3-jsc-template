@@ -1,12 +1,19 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { Routes } from "./router/routes.enum.ts";
+</script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" class="mb-3 flex flex-row gap-4 ml-4 mr-8" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
-  <router-view></router-view>
+  <div class="flex flex-col items-center justify-center">
+    <img alt="Vue logo" src="./assets/logo.png" />
+    <div class="flex flex-row gap-4">
+      <router-link :to="Routes.Home">Home</router-link>
+      <router-link :to="Routes.About">About</router-link>
+    </div>
+    <router-view></router-view>
+  </div>
 </template>
 
-<style>
+<style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

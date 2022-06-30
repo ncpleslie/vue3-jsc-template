@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useStore } from "../store";
+import { useStore } from "@/store";
 
 defineProps<{ msg: string }>();
-const { counter } = useStore();
+const store = useStore();
 </script>
 
 <template>
@@ -25,14 +25,16 @@ const { counter } = useStore();
     <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Docs</a>
   </p>
 
-  <button type="button" @click="counter++">count is: {{ counter }}</button>
+  <button type="button" @click="store.increment">
+    count is: {{ store.count }}
+  </button>
   <p>
     Edit
     <code>components/HelloWorld.vue</code> to test hot module replacement.
   </p>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 a {
   color: #42b983;
 }
