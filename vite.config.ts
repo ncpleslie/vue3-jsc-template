@@ -1,9 +1,9 @@
-import { defineConfig } from "vite";
+import { defineConfig } from "vitest/config";
 import vue from "@vitejs/plugin-vue";
 import Components from "unplugin-vue-components/vite";
 import AutoImport from "unplugin-auto-import/vite";
 import Pages from "vite-plugin-pages";
-import path from "path";
+import { resolve } from "path";
 import copy from "rollup-plugin-copy";
 
 // https://vitejs.dev/config/
@@ -23,7 +23,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      "@": resolve(__dirname, "./src"),
     },
   },
   build: {
@@ -36,4 +36,9 @@ export default defineConfig({
     },
   },
   assetsInclude: ["config.js"],
+  test: {
+    globals: true,
+    environment: "jsdom",
+    include: ["tests/*.ts", "tests/*.{test, spec}.ts"],
+  },
 });
